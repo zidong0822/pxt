@@ -438,7 +438,7 @@ namespace pxt.blocks {
                                 const isInstance = call.isExtensionMethod && i === 0;
                                 if (p.definitionName && !b.getFieldValue(p.definitionName)) {
                                     let i = b.inputList.filter((i: Blockly.Input) => i.name == p.definitionName)[0];
-                                    if (i.connection && i.connection.check_) {
+                                    if (i && i.connection && i.connection.check_) {
                                         if (isInstance && connectionCheck(i) === "Array") {
                                             let gen = handleGenericType(b, p.definitionName);
                                             if (gen) {
