@@ -117,7 +117,7 @@ namespace pxtblockly {
 
             // Force a render.
             this.render_();
-            this.size_.width = 0;
+            this.isDirty_ = true;
             (this as any).mouseDownWrapper_ =
                 Blockly.bindEventWithChecks_((this as any).getClickTarget_(), 'mousedown', this,
                     (this as any).onMouseDown_);
