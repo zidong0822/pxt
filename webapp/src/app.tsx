@@ -1771,15 +1771,8 @@ export class ProjectView
 
     cloudSignInDialog() {
         const providers = cloudsync.providers();
-        if (providers.length == 0)
-            return;
-        if (providers.length == 1)
-            providers[0].loginAsync().then(() => {
-                this.cloudSignInComplete();
-            })
-        else {
+        if (providers.length)
             this.signInDialog.show();
-        }
     }
 
     cloudSignOut() {
