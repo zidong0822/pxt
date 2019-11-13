@@ -162,10 +162,9 @@ function maybeCopy(src, dst) {
     fs.writeFileSync(dst, srcBuf)
 }
 
-maybeCopy('node_modules/pxt-blockly/blocks_compressed.js', 'webapp/public/blockly/');
-maybeCopy('node_modules/pxt-blockly/blockly_compressed.js', 'webapp/public/blockly/');
-maybeCopy('node_modules/pxt-blockly/msg/js/en.js', 'webapp/public/blockly/msg/js/');
-maybeCopy('node_modules/pxt-blockly/msg/json/en.json', 'webapp/public/blockly/msg/json/');
+maybeCopy('node_modules/blockly/blocks.js', 'webapp/public/blockly/');
+maybeCopy('node_modules/blockly/blockly.min.js', 'webapp/public/blockly/');
+maybeCopy('node_modules/blockly/msg/en.js', 'webapp/public/blockly/msg/js');
 // assume the media files only change if the other files change
 if (numCopy > 0)
     jake.cpR('node_modules/pxt-blockly/media', 'webapp/public/blockly/');
@@ -175,7 +174,7 @@ compileDir("pxtcompiler", ["built/pxtlib.js"])
 compileDir("pxtpy", ["built/pxtcompiler.js"])
 compileDir("pxtwinrt", ["built/pxtlib.js"])
 compileDir("pxtblocks", ["built/pxtlib.js", "built/pxtsim.js", "built/pxtcompiler.js"])
-ju.catFiles("built/pxtblockly.js", expand(["webapp/public/blockly/blockly_compressed.js", "webapp/public/blockly/blocks_compressed.js", "webapp/public/blockly/msg/js/en.js", "built/pxtblocks.js"]), "")
+ju.catFiles("built/pxtblockly.js", expand(["webapp/public/blockly/blockly.min.js", "webapp/public/blockly/blocks.js", "webapp/public/blockly/msg/js/en.js", "built/pxtblocks.js"]), "")
 compileDir("pxtrunner", ["built/pxtlib.js", "built/pxteditor.js", "built/pxtcompiler.js", "built/pxtsim.js", "built/pxtblockly.js"])
 compileDir("pxtsim", ["built/pxtlib.js"])
 compileDir("pxteditor", ["built/pxtlib.js", "built/pxtblockly.js"])
