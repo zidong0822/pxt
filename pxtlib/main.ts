@@ -35,6 +35,7 @@ namespace pxt {
 
     let apiInfo: Map<PackageApiInfo>;
     export function setBundledApiInfo(inf: Map<PackageApiInfo>) {
+        if (!inf) return; // happens locally if rebundle is done before a build
         for (const pkgName of Object.keys(inf)) {
             const byQName = inf[pkgName].apis.byQName
             for (const apiName of Object.keys(byQName)) {
