@@ -56,3 +56,4 @@ Click on **Revert** to see how it works.
 * [Commits](/github/commit)
 * [Releases](/github/release)
 * [Diff](/github/diff)
+* [Classroom](/github/classroom)

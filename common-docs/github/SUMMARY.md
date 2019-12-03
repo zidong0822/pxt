@@ -7,3 +7,4 @@
     * [release](/github/release)
     * [test extension](/github/test-extension)
     * [token](/github/token)
+    * [classroom](/github/classroom)
