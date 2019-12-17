@@ -111,6 +111,7 @@ namespace pxt {
 
         host() { return this.parent._host }
 
+        //harvey:获取pxt.json文件的内容
         readFile(fn: string) {
             return this.host().readFile(this, fn)
         }
@@ -509,6 +510,7 @@ namespace pxt {
                 if (this.level == 0)
                     initPromise = initPromise.then(() => this.patchCorePackage());
                 initPromise = initPromise.then(() => {
+                    //harvey:设置编译service
                     if (this.config.compileServiceVariant)
                         pxt.setAppTargetVariant(this.config.compileServiceVariant)
                     if (this.config.files.indexOf("board.json") < 0) return
@@ -633,6 +635,7 @@ namespace pxt {
                 return this.config.files.slice(0);
         }
 
+        //Harvey：获取所有的pxt.json文件
         addSnapshot(files: Map<string>, exts: string[] = [""]) {
             for (let fn of this.getFiles()) {
                 if (exts.some(e => U.endsWith(fn, e))) {
@@ -843,6 +846,7 @@ namespace pxt {
                 }
             }
 
+            //harvey:通过cpp.getExtensionInfo获取common-packages下的.h和.cpp文件并编译为ext,通过getHexInfoAsync下载.hex文件
             return this.loadAsync()
                 .then(() => {
                     opts.bannedCategories = this.resolveBannedCategories();
@@ -901,6 +905,7 @@ namespace pxt {
                     }
                 })
                 .then(() => {
+                    //harvey:遍历所有ts文件
                     for (const pkg of this.sortedDeps()) {
                         for (const f of pkg.getFiles()) {
                             if (/\.(ts|asm|py)$/.test(f)) {

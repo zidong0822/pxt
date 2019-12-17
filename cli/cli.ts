@@ -1149,6 +1149,7 @@ function readLocalPxTarget() {
     return cfg
 }
 
+//harvey:遍历libs下的文件夹
 function forEachBundledPkgAsync(f: (pkg: pxt.MainPackage, dirname: string) => Promise<void>, includeProjects: boolean = false) {
     let prev = process.cwd()
     let folders = pxt.appTarget.bundleddirs;
@@ -1297,6 +1298,7 @@ export function buildTargetAsync(parsed?: commandParser.ParsedCommand): Promise<
         .then(() => internalBuildTargetAsync(opts));
 }
 
+//harvey：编译target
 export function internalBuildTargetAsync(options: BuildTargetOptions = {}): Promise<void> {
     if (pxt.appTarget.id == "core")
         return buildTargetCoreAsync(options)
@@ -2032,6 +2034,7 @@ function compressApiInfo(inf: Map<pxt.PackageApiInfo>) {
     return inf
 }
 
+//harvey:libs下的文件编译
 function buildTargetCoreAsync(options: BuildTargetOptions = {}) {
     let cfg = readLocalPxTarget()
     updateDefaultProjects(cfg);
@@ -2116,6 +2119,7 @@ function buildTargetCoreAsync(options: BuildTargetOptions = {}) {
                         if (fs.existsSync(hexFile)) {
                             pxt.debug(`native image already in offline cache for project ${dirname}: ${hexFile}`);
                         } else {
+                            //harvey:生成hex文件
                             nodeutil.writeFileSync(hexFile, hex.join(os.EOL));
                             pxt.debug(`created native image in offline cache for project ${dirname}: ${hexFile}`);
                         }
@@ -2296,6 +2300,7 @@ function buildFailed(msg: string, e: any) {
     console.log("")
 }
 
+//harvey:
 function buildAndWatchTargetAsync(includeSourceMaps: boolean, rebundle: boolean) {
     if (fs.existsSync("pxt.json") &&
         !(fs.existsSync(path.join(simDir(), "tsconfig.json")) || nodeutil.existsDirSync(path.join(simDir(), "public")))) {
@@ -2412,6 +2417,7 @@ function renderDocs(builtPackaged: string, localDir: string) {
     pxt.log(`All docs written.`);
 }
 
+//harvey:pxt-arcade执行run serve运行该方法,编译hex文件并启动本地服务
 export function serveAsync(parsed: commandParser.ParsedCommand) {
     // always use a cloud build
     // in most cases, the user machine is not properly setup to

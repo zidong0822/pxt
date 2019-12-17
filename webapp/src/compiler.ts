@@ -105,6 +105,7 @@ export function emptyCompileResult(): pxtc.CompileResult {
     }
 }
 
+//harvey:点击下载时编译，此时会调用package.js下的getCompileOptionsAsync方法，该方法在run serve时也会执行编译.hex文件
 export function compileAsync(options: CompileOptions = {}): Promise<pxtc.CompileResult> {
     let trg = pkg.mainPkg.getTargetOptions()
     trg.isNative = options.native

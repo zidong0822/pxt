@@ -950,6 +950,7 @@ namespace ts.pxtc.service {
         },
 
         compile: v => {
+            //harvey:点击下载按钮时执行编译
             host.setOpts(v.options)
             const res = runConversionsAndCompileUsingService()
             timesToMs(res);
@@ -1185,6 +1186,8 @@ namespace ts.pxtc.service {
         }
     }
 
+
+    //harvey：点击下载时编译，获取host.opts获取编译资源，通过compile编译为uf2文件
     function runConversionsAndCompileUsingService() {
         addApiInfo(host.opts)
         const prevFS = U.flatClone(host.opts.fileSystem);

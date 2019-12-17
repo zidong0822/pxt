@@ -156,6 +156,7 @@ namespace pxt.cpp {
         }
     }
 
+    //harvey:获取扩展信息
     export function getExtensionInfo(mainPkg: MainPackage): pxtc.ExtensionInfo {
         let pkgSnapshot: Map<string> = {}
         let constsName = "dal.d.ts"
@@ -869,6 +870,7 @@ namespace pxt.cpp {
             res.yotta.dependencies[cs.yottaCorePackage] = tagged;
         }
 
+        //harvey:获取common-packages下的.h和.cpp文件并编译为compileData
         if (mainPkg) {
             let seenMain = false
 
@@ -1276,6 +1278,7 @@ namespace pxt.hex {
         }
     }
 
+    //Harvey：下载.hex文件，如果没有缓存，则重新编译
     function downloadHexInfoCoreAsync(extInfo: pxtc.ExtensionInfo): Promise<pxtc.HexInfo> {
         let hexurl = ""
 
@@ -1417,6 +1420,7 @@ namespace pxt.hex {
             })
     }
 
+    //harvey:获取.hex文件信息
     export function getHexInfoAsync(host: Host, extInfo: pxtc.ExtensionInfo, cloudModule?: any): Promise<pxtc.HexInfo> {
         if (!extInfo.sha)
             return Promise.resolve<any>(null)

@@ -928,6 +928,7 @@ namespace ts.pxtc {
         }
     }
 
+    //harvey:编译二进制文件
     export function compileBinary(
         program: Program,
         opts: CompileOptions,

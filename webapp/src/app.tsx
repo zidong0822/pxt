@@ -2220,7 +2220,7 @@ export class ProjectView
 
     beforeCompile() { }
 
-    compile(saveOnly = false) {
+    compile(saveOnly = true) {
         pxt.tickEvent("compile");
         pxt.debug('compiling...');
 

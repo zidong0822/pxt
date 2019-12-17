@@ -1045,6 +1045,7 @@ _stored_program: .hex ${res}
         return res
     }
 
+    //harvey:将bin文件转换为uf2文件
     export function processorEmit(bin: Binary, opts: CompileOptions, cres: CompileResult) {
         let src = serialize(bin, opts)
         src = patchSrcHash(bin, src)
