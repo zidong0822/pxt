@@ -2721,6 +2721,7 @@ export class ProjectView
     toggleDebugging() {
         const state = !this.state.debugging;
         this.setState({ debugging: state, tracing: false }, () => {
+            //narvey:模拟器相关
             this.renderCore()
             if (this.editor) {
                 this.editor.updateBreakpoints();

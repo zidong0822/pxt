@@ -379,6 +379,7 @@ if (typeof Object.assign != 'function') {
 }
 
 onmessage = ev => {
+    console.log('onmessage', ev.data.op, ev.data.arg)
     let res = pxtc.service.performOperation(ev.data.op, ev.data.arg)
     pm({
         op: ev.data.op,

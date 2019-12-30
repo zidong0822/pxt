@@ -240,6 +240,7 @@ namespace ts.pxtc {
         return n ? Util.capitalize(n.split('.')[0]) : undefined;
     }
 
+    //harvey:根据ApiInfo生成blockinfo
     export function getBlocksInfo(info: ApisInfo, categoryFilters?: string[]): BlocksInfo {
         let blocks: SymbolInfo[] = []
         const combinedSet: pxt.Map<SymbolInfo> = {}
@@ -444,6 +445,7 @@ namespace ts.pxtc {
             }
         }
 
+        //harvey:过滤程序块类别
         if (categoryFilters)
             filterCategories(categoryFilters);
 

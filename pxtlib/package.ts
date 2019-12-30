@@ -235,6 +235,7 @@ namespace pxt {
                 })
         }
 
+        //harvey:读取各目录下的pxt.json文件内容
         loadConfig() {
             if (this.level != 0 && this.invalid())
                 return; // don't try load invalid dependency
@@ -416,6 +417,7 @@ namespace pxt {
             }
         }
 
+        //harvey:解析pxt.json文件的内容
         private parseConfig(cfgSrc: string, targetVersion?: string) {
             try {
                 const cfg = <PackageConfig>JSON.parse(cfgSrc);

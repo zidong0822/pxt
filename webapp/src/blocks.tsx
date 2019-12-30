@@ -1052,6 +1052,7 @@ export class Editor extends toolboxeditor.ToolboxEditor {
     }
 
     private partitionBlocks() {
+        //harvey:将blockinfo通过injectBlocks方法加载到workspace中
         const res: pxt.Map<toolbox.BlockDefinition[]> = {};
         this.topBlocks = [];
 
@@ -1061,6 +1062,7 @@ export class Editor extends toolboxeditor.ToolboxEditor {
             that.subcategoryMap[ns][subcat] = true;
         }
 
+        console.log('partitionBlocks',this.blockInfo);
         pxt.blocks.injectBlocks(this.blockInfo).forEach(fn => {
             let ns = (fn.attributes.blockNamespace || fn.namespace).split('.')[0];
 
@@ -1146,6 +1148,7 @@ export class Editor extends toolboxeditor.ToolboxEditor {
     }
 
     getNamespaces() {
+        //harvey:此处获取到所有的namespace
         const namespaces = Object.keys(this.nsMap)
             .filter(ns => !snippets.isBuiltin(ns) && !!this.getNamespaceAttrs(ns));
 

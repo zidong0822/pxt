@@ -113,6 +113,7 @@ export abstract class ToolboxEditor extends srceditor.Editor {
 
         let that = this;
 
+        //harvey:过滤掉deprecated和根据isAdvanced过滤Advanceds
         function filterNamespaces(namespaces: [string, pxtc.CommentAttrs][]) {
             return namespaces.filter(([, md]) => !md.deprecated && (isAdvanced ? md.advanced : !md.advanced));
         }
@@ -203,6 +204,7 @@ export abstract class ToolboxEditor extends srceditor.Editor {
                     return category;
                 }).filter(cat => !!cat);
         }
+        //harvey:根据namespaces生成categores
         return createCategories(namespaces, isAdvanced);
     }
 
@@ -321,6 +323,7 @@ export abstract class ToolboxEditor extends srceditor.Editor {
     }
 
     // To be extended by editor
+    //harvey:获取到所有的Namespaces
     getNamespaces() {
         const namespaces: string[] = [];
         // Add extension namespaces if not already in

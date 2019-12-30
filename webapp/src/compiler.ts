@@ -386,6 +386,7 @@ export function getApisInfoAsync() {
         .then(() => cachedApis)
 }
 
+//harvey：获取程序块
 export function getBlocksAsync(): Promise<pxtc.BlocksInfo> {
     if (!cachedBlocks) {
         // Used packaged info
@@ -395,6 +396,7 @@ export function getBlocksAsync(): Promise<pxtc.BlocksInfo> {
                 if (apis) {
                     return ts.pxtc.localizeApisAsync(apis, pkg.mainPkg)
                         .then(apis => {
+                            //harvey:获取程序块信息,此处过滤掉部分被禁止使用的程序块
                             return cachedBlocks = pxtc.getBlocksInfo(apis, bannedCategories)
                         });
                 }
@@ -418,6 +420,7 @@ interface BundledPackage {
     files: pxt.Map<string>;
 }
 
+//harvey:获取ApiInfo
 async function getCachedApiInfoAsync(project: pkg.EditorPackage, bundled: pxt.Map<pxt.PackageApiInfo>): Promise<pxtc.ApisInfo> {
     if (!bundled) return null;
 

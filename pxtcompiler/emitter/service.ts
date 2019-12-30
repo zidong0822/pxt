@@ -514,6 +514,7 @@ namespace ts.pxtc {
         return internalGetApiInfo(program, jres, legacyOnly).apis;
     }
 
+    //harvey:通过webworker获取ApiInfo
     export function internalGetApiInfo(program: Program, jres?: pxt.Map<pxt.JRes>, legacyOnly = false) {
         const res: ApisInfo = {
             byQName: {},
@@ -590,6 +591,7 @@ namespace ts.pxtc {
             }
         }
 
+        //harvey:通过遍历SourceFile获取ApiInfo
         for (let srcFile of program.getSourceFiles()) {
             srcFile.statements.forEach(collectDecls)
         }
@@ -843,6 +845,7 @@ namespace ts.pxtc.service {
         },
 
         setOptions: v => {
+            //harvey:设置sourceFiles等相关内容
             host.setOpts(v.options)
         },
 
@@ -1247,6 +1250,7 @@ namespace ts.pxtc.service {
     function init() {
         if (!service) {
             host = new Host()
+            //harvey：创建service,之后的program.getSourceFiles从service中获得
             service = ts.createLanguageService(host)
         }
     }
